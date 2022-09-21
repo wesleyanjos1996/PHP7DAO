@@ -27,8 +27,24 @@ $search = Usuario::search("root");
 echo json_encode($search);
 */
 
+/*
 // Carrega um usuário usando o login e a senha
 $user = new Usuario();
 $user->login("user", "12345");
+echo $user;
+*/
+
+/*
+// Craindo um novo usuário
+$aluno = new Usuario("aluno", "@lun0");
+//$aluno->setDeslogin("aluno");
+//$aluno->setDessenha("@lun0");
+$aluno->insert();
+echo $aluno;
+*/
+
+$user = new Usuario();
+$user->laodById(10);
+$user->update("professor", "prof2022PHP@");
 echo $user;
 ?>
