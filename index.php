@@ -43,8 +43,18 @@ $aluno->insert();
 echo $aluno;
 */
 
+
+// Alterar um usuário - UPDATE
 $user = new Usuario();
-$user->laodById(10);
+$user->laodById(9);
 $user->update("professor", "prof2022PHP@");
 echo $user;
+
+/*
+// Deleta um usuário
+$user = new Usuario();
+$user->laodById(10);
+$user->delete();
+echo $user;
+*/
 ?>

@@ -87,11 +87,33 @@ class Usuario
 
         $sql = new SQL();
 
-        $sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID LIMIT 1", array(
+        /*$sql->query("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID LIMIT 1", array(
+            ":LOGIN" => $this->getDeslogin(),
+            ":PASSWORD" => $this->getDessenha(),
+            ":ID" => $this->getIdusuario()
+        ));*/
+        $sql->select("UPDATE tb_usuarios SET deslogin = :LOGIN, dessenha = :PASSWORD WHERE idusuario = :ID LIMIT 1", array(
             ":LOGIN" => $this->getDeslogin(),
             ":PASSWORD" => $this->getDessenha(),
             ":ID" => $this->getIdusuario()
         ));
+    }
+
+    public function delete()
+    {
+        $sql = new SQL();
+        /*$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+            ":ID"=>$this->getIdusuario()
+        ));*/
+
+        $sql->select("DELETE FROM tb_usuarios WHERE idusuario = :ID LIMIT 1", array(
+            ":ID"=>$this->getIdusuario()
+        ));
+
+        $this->setIdusuario(0);
+        $this->setDeslogin("");
+        $this->setDessenha("");
+        $this->setDtcadastro(new DateTime());
     }
 
     //Getters and Setters
